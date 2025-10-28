@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clash Royale Card Picker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Clash Royale Strategy Helper</h1>
+            <div class="elixir-display">
+                <div class="elixir-counter">
+                    <span id="elixir-amount">5</span>/10
+                </div>
+                <div class="elixir-bar">
+                    <div id="elixir-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="card-picker">
+                <h2>Pick Three Cards</h2>
+                <div class="card-inputs">
+                    <div class="card-input">
+                        <label for="card1">Card 1:</label>
+                        <input type="text" id="card1" list="card-list" placeholder="Enter card name">
+                    </div>
+                    <div class="card-input">
+                        <label for="card2">Card 2:</label>
+                        <input type="text" id="card2" list="card-list" placeholder="Enter card name">
+                    </div>
+                    <div class="card-input">
+                        <label for="card3">Card 3:</label>
+                        <input type="text" id="card3" list="card-list" placeholder="Enter card name">
+                    </div>
+                </div>
+                <button id="analyze-btn">Find Best Card</button>
+            </section>
+
+            <section class="result-section">
+                <h2>Recommendation</h2>
+                <div id="result" class="result-display">
+                    Select three cards above to get a recommendation
+                </div>
+            </section>
+
+            <datalist id="card-list">
+                <!-- Will be populated by JavaScript -->
+            </datalist>
+        </main>
+    </div>
+    <script src="cards.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
