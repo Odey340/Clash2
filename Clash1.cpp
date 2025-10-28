@@ -7,7 +7,7 @@
 #include <cctype>
 #include <sstream>
 
-// Helpers
+
 static inline std::string to_lower_trim(const std::string &s) {
     size_t start = 0;
     while (start < s.size() && std::isspace((unsigned char)s[start])) ++start;
@@ -20,18 +20,18 @@ static inline std::string to_lower_trim(const std::string &s) {
 }
 
 int main() {
-    // Try to load ordered card list from cards.txt (one card per line).
+    
     std::vector<std::string> cards;
     std::ifstream in("cards.txt");
     if (in) {
         std::string line;
         while (std::getline(in, line)) {
             std::string t = to_lower_trim(line);
-            if (!t.empty()) cards.push_back(line); // preserve original case in vector
+            if (!t.empty()) cards.push_back(line); 
         }
         std::cout << "Loaded " << cards.size() << " cards from cards.txt\n";
     } else {
-        // Fallback sample list. Replace or create cards.txt to include every card in ranked order.
+        //can be put in any order based on preference, this is based off win %
         cards = {
             "Barbarian Hut",
             "Cannon Cart",
@@ -106,10 +106,6 @@ int main() {
             "Miner",
             "Graveyard",
             
-
-
-
-            // ... add or load the full list here
         };
         std::cout << "Using built-in sample list (" << cards.size() << " cards). Put full ranked list in cards.txt to use it.\n";
     }
@@ -119,7 +115,7 @@ int main() {
         return 1;
     }
 
-    // Build map: lowercase name -> rank (1-based)
+    
     std::unordered_map<std::string, int> rank;
     rank.reserve(cards.size());
     for (size_t i = 0; i < cards.size(); ++i) {
@@ -133,7 +129,7 @@ int main() {
         return to_lower_trim(input);
     };
 
-    // Read three choices
+    
     std::vector<std::string> choices(3);
     for (int i = 0; i < 3; ++i) {
         choices[i] = read_choice(i + 1);
@@ -143,7 +139,7 @@ int main() {
         }
     }
 
-    // Validate and find lowest rank
+    
     int bestRank = INT_MAX;
     int bestIndex = -1;
     for (int i = 0; i < 3; ++i) {
@@ -160,4 +156,5 @@ int main() {
 
     std::cout << "Best (lowest-ranked) choice: " << cards[bestRank - 1] << " (rank " << bestRank << ")\n";
     return 0;
+
 }
